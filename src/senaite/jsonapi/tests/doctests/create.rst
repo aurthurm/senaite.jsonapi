@@ -209,31 +209,31 @@ Create a Department
 ~~~~~~~~~~~~~~~~~~~
 
     >>> data = {"portal_type": "Department",
-    ...          "DepartmentID": "MB",
-    ...         "parent_path": api.get_path(setup.bika_departments),
+    ...         "DepartmentID": "MB",
+    ...         "parent_path": api.get_path(portal.setup.departments),
     ...         "title": "Microbiology",
     ...         "Manager": api.get_uid(lab_contact)}
     >>> department = create(data)
     >>> department.Title()
     'Microbiology'
     >>> api.get_parent(department)
-    <Departments at /plone/bika_setup/bika_departments>
+    <Departments at /plone/setup/departments>
 
 
 Create an Analysis Category
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     >>> data = {"portal_type": "AnalysisCategory",
-    ...         "parent_path": api.get_path(setup.bika_analysiscategories),
+    ...         "parent_path": api.get_path(portal.setup.analysiscategories),
     ...         "title": "Microbiology identification",
     ...         "Department": api.get_uid(department)}
     >>> category = create(data)
     >>> category.Title()
     'Microbiology identification'
     >>> api.get_parent(category)
-    <AnalysisCategories at /plone/bika_setup/bika_analysiscategories>
+    <AnalysisCategories at /plone/setup/analysiscategories>
     >>> category.getDepartment()
-    <Department at /plone/bika_setup/bika_departments/department-1>
+    <Department at /plone/setup/departments/department-1>
 
 
 Create an Analysis Service
@@ -257,7 +257,7 @@ Create an Analysis Service
     >>> sal.getAccredited()
     True
     >>> sal.getCategory()
-    <AnalysisCategory at /plone/bika_setup/bika_analysiscategories/analysiscategory-1>
+    <AnalysisCategory at /plone/setup/analysiscategories/analysiscategory-1>
 
     >>> data = {"portal_type": "AnalysisService",
     ...         "parent_path": api.get_path(setup.bika_analysisservices),
@@ -276,7 +276,7 @@ Create an Analysis Service
     >>> ecoli.getPrice()
     '15.00'
     >>> ecoli.getCategory()
-    <AnalysisCategory at /plone/bika_setup/bika_analysiscategories/analysiscategory-1>
+    <AnalysisCategory at /plone/setup/analysiscategories/analysiscategory-1>
 
 Creating a Sample
 ~~~~~~~~~~~~~~~~~

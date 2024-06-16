@@ -1087,6 +1087,10 @@ def is_creation_allowed(portal_type, container):
     if container == api.get_setup():
         return False
 
+    # Do not allow the update of objects that belong to senaite_setup folder
+    if container == api.get_senaite_setup():
+        return False
+
     # Check if the portal_type is allowed in the container
     container_info = container.getTypeInfo()
     if container_info.filter_content_types:
@@ -1120,6 +1124,10 @@ def is_update_allowed(obj):
 
     # Do not allow the update of objects that belong to setup folder
     if parent == api.get_setup():
+        return False
+
+    # Do not allow the update of objects that belong to senaite_setup folder
+    if parent == api.get_senaite_setup():
         return False
 
     # Look for an update-specific adapter for this object
