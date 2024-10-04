@@ -222,7 +222,10 @@ class ATDataProvider(Base):
 
         # get the schema fields from the data manager
         schema = api.get_schema(context)
-        self.keys = schema.keys()
+        try:
+            self.keys = schema.keys()
+        except AttributeError:
+            self.keys = schema.__dict__.keys()
 
 
 class SiteRootDataProvider(Base):
